@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "MediaWikiApi": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\karkn\\source\\repos\\WikipediaParser\\DebugMediaWiki\\bin\\Debug\\netcoreapp3.1\\DebugMediaWiki.exe"
+    }
+  }
+}
