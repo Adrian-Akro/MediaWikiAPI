@@ -1,7 +1,6 @@
 ﻿using MediaWikiApi.Requests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections;
 
 namespace MediaWikiApiTest {
 

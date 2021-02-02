@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WikipediaParser\MediaWikiApi.csproj" />
+    <ProjectReference Include="..\MediaWikiApi\MediaWikiApi.csproj" />
   </ItemGroup>
 
 </Project>

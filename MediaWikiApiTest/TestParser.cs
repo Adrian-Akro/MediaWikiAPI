@@ -1,14 +1,10 @@
-﻿using MediaWikiApi.Requests;
-using MediaWikiApi.Wiki.Parser;
+﻿using MediaWikiApi.Wiki.Parser;
 using MediaWikiApi.Wiki.Response.OpenSearch;
 using MediaWikiApi.Wiki.Response.Query.Categories;
 using MediaWikiApi.Wiki.Response.Query.Extracts;
 using MediaWikiApi.Wiki.Response.Query.ImageInfo;
 using MediaWikiApi.Wiki.Response.Query.Images;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace MediaWikiApiTest {

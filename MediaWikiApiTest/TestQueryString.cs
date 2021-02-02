@@ -1,5 +1,5 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MediaWikiApi.Requests;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 
 namespace MediaWikiApiTest {
@@ -65,7 +65,7 @@ namespace MediaWikiApiTest {
             qs.AddList("arg1", "value2");
             qs.AddList("arg2", "value");
             bool result = qs.TryGetList("arg1", out string[] values);
-            Assert.IsTrue(values.SequenceEqual(new string[] { "value", "value2" }) );
+            Assert.IsTrue(values.SequenceEqual(new string[] { "value", "value2" }));
             Assert.IsTrue(result);
             result = qs.TryGetList("arg3", out string[] valuesNull);
             Assert.IsNull(valuesNull);
@@ -80,7 +80,7 @@ namespace MediaWikiApiTest {
             qs.AddList("arg1", "value2");
             qs.Add("arg2", "value2");
             int count = 0;
-            foreach(var item in qs) {
+            foreach (var item in qs) {
                 count++;
                 Assert.IsInstanceOfType(item.Key, typeof(string));
                 Assert.IsInstanceOfType(item.Value.Item1, typeof(ParamType));

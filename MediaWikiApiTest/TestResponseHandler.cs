@@ -1,13 +1,10 @@
-﻿using MediaWikiApi.Requests;
-using MediaWikiApi.Wiki.Handler;
+﻿using MediaWikiApi.Wiki.Handler;
 using MediaWikiApi.Wiki.Response.Query.Categories;
 using MediaWikiApi.Wiki.Response.Query.Extracts;
 using MediaWikiApi.Wiki.Response.Query.ImageInfo;
 using MediaWikiApi.Wiki.Response.Query.Images;
 using MediaWikiApi.Wiki.Response.Query.PageImages;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
