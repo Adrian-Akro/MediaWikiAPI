@@ -3,6 +3,9 @@
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RepositoryUrl>https://github.com/Adrian-Akro/MediaWikiAPI</RepositoryUrl>
+    <Version>1.0.1</Version>
+    <PackageReleaseNotes>Changed nuspec to link to github repo</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
