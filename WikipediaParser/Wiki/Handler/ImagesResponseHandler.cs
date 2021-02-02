@@ -27,6 +27,7 @@ namespace MediaWikiApi.Wiki.Handler {
 
         protected override List<T> GetRequestedFromResponse(ImagesPage<T> parsedResponse) {
             if (parsedResponse.Missing) throw new PageNotFoundException(parsedResponse.Title);
+            else if (parsedResponse.Images == null) return new List<T>();
             return parsedResponse.Images.Cast<T>().ToList();
         }
 

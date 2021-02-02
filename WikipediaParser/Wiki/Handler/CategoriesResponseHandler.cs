@@ -19,6 +19,7 @@ namespace MediaWikiApi.Wiki.Handler {
 
         protected override List<T> GetRequestedFromResponse(CategoriesPage<T> parsedResponse) {
             if (parsedResponse.Missing) throw new PageNotFoundException(parsedResponse.Title);
+            else if (parsedResponse.Categories == null) return new List<T>();
             return parsedResponse.Categories;
         }
 

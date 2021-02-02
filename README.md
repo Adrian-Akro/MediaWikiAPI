@@ -9,7 +9,7 @@ WikiApi api = new WikiApi("https://www.wikipedia.org/");
 You can then use the different methods in this class to extract resources from a page by providing a valid page title.
 
 ### Obtaining a valid page title
-To obtain a valid page title it's necessary to first perform an **OpenSearch**, by doing so the API will return a list of titles and URLs that match the search parameter.
+To obtain a valid page title it's necessary to first perform an **OpenSearch**, by doing so the API will return a list of titles and URLs that match the search argument.
 
 ```
 IOpenSearch openSearchResponse = api.Search("Google");
@@ -58,7 +58,7 @@ IReadOnlyList<Section> sections = api.GetSections("Google");
 
 
 ## Using the provided classes by the library to perform other queries
-The following classes are designed to work on any queries derived from their base implementation, meaning that for example, a *ImageInfoResponseHandler* can be used to request any *ImageInfo* data if it's provided a class that implements *IImageInfo* and the right arguments are provided.
+The following classes are designed to work on any queries derived from their base implementation, meaning that for example, a *ImageInfoResponseHandler* can be used to request any *ImageInfo* data if it's provided a class that implements *IImageInfo* and the right arguments.
 ```
 > ImageInfoResponseHandler
 > ExtractResponseHandler
@@ -77,4 +77,4 @@ FooImageInfoType fooImageInfo = imageInfoResponseHandler.RequestSingle("myTitle"
 ```
 
 ## Creating a new query
-To create a new query you can extend the abstract class QueryHandler. Note that you may need to override some virtual methods since the default implementations may not work for use case.
+To create a new query you can extend the abstract class QueryHandler. Note that you may need to override some virtual methods since the default implementations may not work for your use case.
