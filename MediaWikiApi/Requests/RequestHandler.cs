@@ -27,7 +27,7 @@ namespace MediaWikiApi.Requests {
             return queryString.RemoveKey(key);
         }
 
-        public IEnumerator<KeyValuePair<string, (ParamType, string)>> QueryStringArguments() => queryString.GetEnumerator();
+        public IEnumerator<KeyValuePair<string, (ParamType, string)>> QueryStringArguments => queryString.GetEnumerator();
 
         public static Builder From(RequestHandler request) {
             return new Builder(request);
@@ -65,6 +65,7 @@ namespace MediaWikiApi.Requests {
             }
 
             public Builder WithEndpoint(string endpoint) {
+                if (endpoint.StartsWith("/")) endpoint = endpoint.Substring(1);
                 request.Endpoint = endpoint;
                 return this;
             }

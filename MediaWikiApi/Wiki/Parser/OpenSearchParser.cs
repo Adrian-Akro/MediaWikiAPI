@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 
 namespace MediaWikiApi.Wiki.Parser {
-    class OpenSearchParser : IParser<OpenSearch> {
+    public class OpenSearchParser : IParser<OpenSearch> {
 
         public OpenSearch Parse(string requestResult) {
             JArray jArray = JsonConvert.DeserializeObject<JArray>(requestResult);

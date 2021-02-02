@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 
 namespace MediaWikiApi.Wiki.Parser {
-    class QueryParser<TPage, TContinue> : IParser<PageQuery<TPage, TContinue>>
+    public class QueryParser<TPage, TContinue> : IParser<PageQuery<TPage, TContinue>>
         where TPage : IPage
         where TContinue : IContinueParameters {
         public PageQuery<TPage, TContinue> Parse(string requestResult) {

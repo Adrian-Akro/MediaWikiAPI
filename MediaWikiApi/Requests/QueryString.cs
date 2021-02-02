@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 
 namespace MediaWikiApi.Requests {
-    class QueryString : IEnumerable<KeyValuePair<string, (ParamType, string)>> {
+    public class QueryString : IEnumerable<KeyValuePair<string, (ParamType, string)>> {
         Dictionary<string, LinkedList<string>> listValuesDict;
         Dictionary<string, string> singleValuesDict;
 
@@ -19,8 +19,12 @@ namespace MediaWikiApi.Requests {
                 key,
                 out LinkedList<string> lList
                 );
-            values = new string[lList.Count];
-            lList.CopyTo(values, 0);
+            if (lList != null) {
+                values = new string[lList.Count];
+                lList.CopyTo(values, 0);
+            } else {
+                values = null;
+            }
             return result;
         }
 

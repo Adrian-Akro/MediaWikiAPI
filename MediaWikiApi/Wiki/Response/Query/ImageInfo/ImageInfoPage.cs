@@ -8,6 +8,6 @@ namespace MediaWikiApi.Wiki.Response.Query.ImageInfo {
         public bool Missing { get; set; }
         public bool Known { get; set; }
         public string ImageRepository { get; set; }
-        public List<T> ImageInfo { get; set; }
+        public List<T> ImageInfo { get; set; } = new List<T>();
     }
 }

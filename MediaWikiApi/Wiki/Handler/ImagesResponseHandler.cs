@@ -2,25 +2,22 @@
 using MediaWikiApi.Wiki.Handler.Abstractions;
 using MediaWikiApi.Wiki.Handler.Exceptions;
 using MediaWikiApi.Wiki.Response.Query;
-using MediaWikiApi.Wiki.Response.Query.Categories;
+using MediaWikiApi.Wiki.Response.Query.Images;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MediaWikiApi.Wiki.Handler {
-    public class CategoriesResponseHandler<T> : QueryHandler<List<T>, CategoriesPage<T>, CategoriesContinueParams>
-        where T : ICategory, new() {
-        public CategoriesResponseHandler(string wikiUrl) : base(wikiUrl) { }
+    public class ImagesResponseHandler<T> : QueryHandler<List<T>, ImagesPage<T>, ImagesContinueParams>
+        where T : IImage, new() {
+
+        public ImagesResponseHandler(string wikiUrl) : base(wikiUrl) { }
 
         public override RequestHandler GetQueryRequestHandler(string wikiBaseUrl) {
             return base
                 .GetQueryRequestHandler(wikiBaseUrl)
-                .AddArgument("prop", "categories");
+                .AddArgument("prop", "images");
         }
 
-
-        protected override List<T> GetRequestedFromResponse(CategoriesPage<T> parsedResponse) {
-            if (parsedResponse.Missing) throw new PageNotFoundException(parsedResponse.Title);
-            return parsedResponse.Categories;
-        }
 
 
         protected override List<T> ComputeContinuedBehavior(List<T> newData, List<T> existingData) {
@@ -28,16 +25,21 @@ namespace MediaWikiApi.Wiki.Handler {
             return existingData;
         }
 
-        protected override bool IsContinue(IQuery<CategoriesContinueParams> parsedResponse, RequestHandler parametrizedRequestHandler, out RequestHandler continueRequestHandler) {
+        protected override List<T> GetRequestedFromResponse(ImagesPage<T> parsedResponse) {
+            if (parsedResponse.Missing) throw new PageNotFoundException(parsedResponse.Title);
+            else if (parsedResponse.Images == null) return new List<T>();
+            return parsedResponse.Images.Cast<T>().ToList();
+        }
+
+        protected override bool IsContinue(IQuery<ImagesContinueParams> parsedResponse, RequestHandler parametrizedRequestHandler, out RequestHandler continueRequestHandler) {
             if (parsedResponse.Continue == null) {
                 continueRequestHandler = null;
                 return false;
             }
             continueRequestHandler = parametrizedRequestHandler
                 .AddArgument("continue", parsedResponse.Continue.Continue)
-                .AddArgument("clcontinue", parsedResponse.Continue.ClContinue);
+                .AddArgument("imcontinue", parsedResponse.Continue.ImContinue);
             return !(parsedResponse.BatchComplete);
         }
     }
 }
-
