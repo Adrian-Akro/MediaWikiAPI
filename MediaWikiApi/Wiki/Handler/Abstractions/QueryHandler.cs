@@ -1,7 +1,10 @@
 ﻿using MediaWikiApi.Requests;
+using MediaWikiApi.Requests.Exceptions;
+using MediaWikiApi.Wiki.Handler.Exceptions;
 using MediaWikiApi.Wiki.Handler.Interfaces;
 using MediaWikiApi.Wiki.Parser;
 using MediaWikiApi.Wiki.Response.Query;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -56,8 +59,12 @@ namespace MediaWikiApi.Wiki.Handler.Abstractions {
             string response;
             PageQuery<TPage, TContinue> parsedResponse;
             do {
-                response = parametrizedRh.Make();
-                parsedResponse = Parser.Parse(response);
+                try {
+                    response = parametrizedRh.Make();
+                    parsedResponse = Parser.Parse(response);
+                } catch (Exception ex) {
+                    throw new CouldNotParseException(ex);
+                }
                 for (int i = 0; i < parsedResponse.Query.Pages.Count; i++) {
                     TPage page = parsedResponse.Query.Pages[i];
                     TReturnType requestedData = GetRequestedFromResponse(page);

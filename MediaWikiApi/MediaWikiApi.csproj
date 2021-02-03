@@ -4,13 +4,29 @@
     <OutputType>Library</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RepositoryUrl>https://github.com/Adrian-Akro/MediaWikiAPI</RepositoryUrl>
-    <Version>1.0.1</Version>
-    <PackageReleaseNotes>Changed nuspec to link to github repo</PackageReleaseNotes>
+    <Version>1.0.2</Version>
+    <PackageReleaseNotes>Updated package details</PackageReleaseNotes>
+    <Authors>Adrian Martin</Authors>
+    <PackageIcon>sunflower.png</PackageIcon>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <Description>C# library for connecting with the MediaWiki API</Description>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="HtmlAgilityPack" Version="1.11.29" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="D:\Users\karkn\Images\Saved Pictures\sunflower.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

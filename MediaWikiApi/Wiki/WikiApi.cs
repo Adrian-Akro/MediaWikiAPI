@@ -23,6 +23,7 @@ namespace MediaWikiApi.Wiki {
             if (!IsWikiUrlValid(wikiUrl)) {
                 throw new UriFormatException();
             }
+            openSearchResponseHandler = new OpenSearchResponseHandler(wikiUrl);
             imagesResponseHandler = new ImagesResponseHandler<Image>(wikiUrl);
             imageInfoResponseHandler = new ImageInfoResponseHandler<ImageInfoUrl>(wikiUrl);
             imageInfoResponseHandler.AddQueryStringArgument("iiprop", "url");
@@ -30,7 +31,16 @@ namespace MediaWikiApi.Wiki {
             pageImageResponseHandler = new PageImageResponseHandler<SourcePageImagePage>(wikiUrl);
             pageImageResponseHandler.AddQueryStringArgument("piprop", "original");
             categoriesResponseHandler = new CategoriesResponseHandler<Category>(wikiUrl);
-            openSearchResponseHandler = new OpenSearchResponseHandler(wikiUrl);
+        }
+
+        public static bool IsValidWikiUrl(string wikiUrl) {
+            OpenSearchResponseHandler openSearchResponseHandler = new OpenSearchResponseHandler(wikiUrl);
+            try {
+                openSearchResponseHandler.RequestSingle("a");
+            } catch (Exception) {
+                return false;
+            }
+            return true;
         }
 
         private bool IsWikiUrlValid(string wikiUrl) {

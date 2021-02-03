@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MediaWikiApi.Requests.Exceptions;
+using System;
 using System.Collections.Generic;
 
 namespace MediaWikiApi.Requests {
@@ -6,14 +7,17 @@ namespace MediaWikiApi.Requests {
         public string BaseUrl { get; private set; }
         public string Endpoint { get; private set; }
 
-        // TODO Allow argument manipulation of QueryString and make private or protected
         private QueryString queryString { get; set; }
         private RequestHandler() { }
 
         public string Make() {
-            return WebClient.Request(
-                new Uri($"{BaseUrl}{Endpoint}{queryString}")
-                ).Result;
+            try {
+                return WebClient.Request(
+                    new Uri($"{BaseUrl}{Endpoint}{queryString}")
+                    ).Result;
+            } catch (Exception ex) {
+                throw new UnreachableUrlException(ex);
+            }
         }
         public RequestHandler AddArgument(string key, string value, ParamType type = ParamType.Single) {
             if (type.Equals(ParamType.Single))
