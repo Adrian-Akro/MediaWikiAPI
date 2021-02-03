@@ -23,10 +23,6 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
-    <None Include="D:\Users\karkn\Images\Saved Pictures\sunflower.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
     <None Include="sunflower.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
