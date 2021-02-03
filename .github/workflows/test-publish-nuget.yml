@@ -29,6 +29,7 @@ jobs:
     environment:
       name: TestAndPublishEnv
     needs: build-test
+    if: github.ref == 'refs/heads/master'
     strategy:
       matrix:
         os: [ubuntu-latest]
