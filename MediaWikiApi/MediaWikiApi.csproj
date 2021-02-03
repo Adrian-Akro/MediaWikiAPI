@@ -10,7 +10,7 @@
     <PackageIcon>sunflower.png</PackageIcon>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <Description>C# library for connecting with the MediaWiki API</Description>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
