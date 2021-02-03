@@ -23,6 +23,7 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
     - name: Publish to NuGet
+      uses: brandedoutcast/publish-nuget@v2
       with:
         PROJECT_FILE_PATH: MediaWikiApi/MediaWikiApi.csproj
         NUGET_KEY: ${{secrets.NUGET_API_KEY}}

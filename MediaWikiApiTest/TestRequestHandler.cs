@@ -1,6 +1,6 @@
 ﻿using MediaWikiApi.Requests;
+using MediaWikiApi.Requests.Exceptions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 
 namespace MediaWikiApiTest {
 
@@ -15,7 +15,7 @@ namespace MediaWikiApiTest {
                 .WithQueryStringParam("param1", "value")
                 .WithQueryStringParam("param2", "value", ParamType.List)
                 .Build();
-            Assert.ThrowsException<AggregateException>(rh.Make);
+            Assert.ThrowsException<UnreachableUrlException>(rh.Make);
         }
 
         [TestMethod]
