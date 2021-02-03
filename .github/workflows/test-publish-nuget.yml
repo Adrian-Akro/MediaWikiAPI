@@ -1,0 +1,50 @@
+name: Build, test and publish
+
+on: [push, pull_request]
+
+jobs:
+  build-test:
+    environment:
+      name: TestAndPublishEnv
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.405
+    - name: Install dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+    - name: MediaWikiApiTest
+      run: dotnet test
+      
+  publish-nuget:
+    environment:
+      name: TestAndPublishEnv
+    needs: build-test
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.405
+    - name: Install dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+    - name: Publish to NuGet
+      uses: rohith/publish-nuget@v2
+      with:
+        PROJECT_FILE_PATH: MediaWikiApi/MediaWikiApi.csproj
+        NUGET_KEY: ${{secrets.NUGET_API_KEY}}
