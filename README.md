@@ -57,7 +57,7 @@ IReadOnlyList<Section> sections = api.GetSections("Google");
 ```
 
 
-## Using the provided classes by the library to perform other queries
+## Using the classes provided by the library to perform other queries
 The following classes are designed to work on any queries derived from their base implementation, meaning that for example, a *ImageInfoResponseHandler* can be used to request any *ImageInfo* data if it's provided a class that implements *IImageInfo* and the right arguments.
 ```
 > ImageInfoResponseHandler
