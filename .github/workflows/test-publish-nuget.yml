@@ -43,6 +43,8 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --configuration Release --no-restore
+    - name: Pack
+      run: dotnet pack --no-build MediaWikiApi/MediaWikiApi.csproj
     - name: Publish to NuGet
       uses: rohith/publish-nuget@v2
       with:
